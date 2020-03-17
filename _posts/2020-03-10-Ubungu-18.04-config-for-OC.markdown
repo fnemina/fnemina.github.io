@@ -146,3 +146,17 @@ chmod +x esa-snap_all_unix_7_0.sh
 ./esa-snap_all_unix_7_0.sh
 ```
 and follow the instructions on screen.
+
+# VS Code
+
+To install VS code we do
+
+```bash
+sudo apt install software-properties-common apt-transport-https
+wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+sudo apt update
+sudo apt install code
+```
+
+The extensions I use are python, Latex Workshop and Modern fortran.

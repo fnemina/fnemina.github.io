@@ -1,0 +1,147 @@
+---
+layout: post
+title:  "Ubuntu 18.04 config for Ocean Colour processing and simulations"
+date:   2020-03-10 12:00:55 -0300
+categories: jekyll update
+---
+
+I'll try to write down here how I configure my Ubuntu install to process Ocean Colour data and perform simulations using different radiative transfer codes.
+
+In general I try to use the last Ubuntu version, but this post will explain how to configure it with Ubuntu 18.04 LTS. When version 20.04 LTS is available I'll update this.
+
+You can jump straight to some topic here
+
+ - [After install](#after-install)
+ - [Anaconda](#anaconda)
+ - [Latex](#latex)
+ - [Radiative transfer codes](#radiative-transfer-codes)
+
+# After install
+
+After a clean install of Ubuntu, in general I install the default tools I perform a system update
+
+```bash
+sudo apt update
+sudo apt upgrade
+```
+
+The main softwares I install from the Ubuntu software repositories are related to compiling code and using git.
+
+```bash
+sudo apt install gfortran git make wget vim
+```
+
+# Anaconda
+
+I use conda as a python environment manager and [Anaconda](https://www.anaconda.com/) as the main distribution. For this I perform a regular install of miniconda with Python 3 and configure it as the default python in bash.
+
+```bash
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+chmod +x Miniconda3-latest-Linux-x86_64.sh
+./Miniconda3-latest-Linux-x86_64.sh
+source ~/.bashrc
+```
+
+repliying `yes` when the installer asks
+
+```bash
+Do you wish the installer to initialize Miniconda3
+by running conda init? [yes|no]
+[no] >>> yes
+```
+
+then to install the full lastes anaconda distribution we do
+
+```bash
+conda install anaconda 
+conda install tqdm
+conda install joblib
+conda install -c conda-forge pyhdf
+conda install -c mvdbeek multiprocessing-logging
+```
+
+With conda we can create different environments, but lately I've been working just with the default one. I use a few aditional python codes mostly tqdm.
+
+# Latex
+
+For latex I use the base distribution. Lately I've been doing most of my work in [Ovearleaf](https://www.overleaf.com/). However to make some plots in matplotlib I use a script modified from a [nipunbatra](nipunbatra.github.io) post. 
+
+```bash
+sudo apt install texlive-base texlive-science
+sudo apt install texlive-fonts-recommended texlive-fonts-extra
+sudo apt install dvipng
+```
+
+To enable fontawesome5 in Ubuntu 18.04 we do
+
+```bash
+sudo updmap-sys --enable Map=fontawesome5.map
+```
+
+we finally install latexify (my version).
+
+```bash
+git clone https://github.com/fnemina/latexify
+cd latexify
+python setup.py install
+cd ~cd ~cd
+```
+
+# Radiative transfer codes
+
+I mainly use two radiative transfer codes and a absorption code right now.
+
+## 6S and py6S
+
+This one is the easier to install with detailed instructions [here](https://py6s.readthedocs.io/).
+
+```bash
+conda install -c conda-forge py6s
+```
+
+## OSOAA and pyOSOAA
+
+This one is a little more difficult to install implying clonning diferent repositories and tinkering with configs. But here we go.
+
+First we install the OSOAA. We first clone it
+
+```bash
+sudo apt install ksh
+git clone https://github.com/CNES/RadiativeTransferCode-OSOAA.git
+```
+
+And then we to configure the `OSOAA_ROOT` enviroment variable.
+
+```bash
+echo 'export OSOAA_ROOT="PATH_TO_OSOAA"' >> ~/.bashrc
+source ~/.bashrc
+```
+were `PATH_TO_OSOAA` is the path were we downloaded the OSOAA code.
+
+We then compile the OSOAA
+
+```bash
+mkdir $OSOAA_ROOT/obj
+make -f $OSOAA_ROOT/gen/Makefile_OSOAA.gfortran
+```
+
+We then instale the pyOSOAA code
+
+```bash
+git clone https://github.com/fnemina/pyOSOAA.git
+cd pyOSOAA
+python setup.py install
+```
+
+# Image processing software
+
+## SNAP
+
+To install the SNAP software from ESA first download just run
+
+```bash
+wget http://step.esa.int/downloads/7.0/installers/esa-snap_all_unix_7_0.sh
+chmod +x esa-snap_all_unix_7_0.sh
+./esa-snap_all_unix_7_0.sh
+```
+and follow the instructions on screen.

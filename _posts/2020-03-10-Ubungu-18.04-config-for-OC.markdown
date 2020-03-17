@@ -15,6 +15,7 @@ You can jump straight to some topic here
  - [Anaconda](#anaconda)
  - [Latex](#latex)
  - [Radiative transfer codes](#radiative-transfer-codes)
+ - [Image processing software](#image-processing-software)
 
 # After install
 

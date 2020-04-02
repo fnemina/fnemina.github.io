@@ -63,6 +63,24 @@ conda install -c mvdbeek multiprocessing-logging
 
 With conda we can create different environments, but lately I've been working just with the default one. I use a few aditional python codes mostly tqdm.
 
+## Add an icon for Jupyter lab
+
+Follow [this](https://blog.aldomann.com/jupyterlab-desktop-on-linux/) blog post.
+
+## Nicer progress bar
+
+To make nicer progress bars work in jupyter lab we do
+
+```bash
+conda install -c conda-forge nodejs=12
+conda install -c conda-forge widgetsnbextension
+conda install -c conda-forge ipywidgets
+jupyter nbextension enable --py widgetsnbextension
+jupyter labextension install @jupyter-widgets/jupyterlab-manager
+```
+
+
+
 # Latex
 
 For latex I use the base distribution. Lately I've been doing most of my work in [Ovearleaf](https://www.overleaf.com/). However to make some plots in matplotlib I use a script modified from a [nipunbatra](nipunbatra.github.io) post. 
@@ -141,6 +159,7 @@ python setup.py install
 To install the SNAP software from ESA first download just run
 
 ```bash
+sudo apt install libcanberra-gtk-module libcanberra-gtk3-module
 wget http://step.esa.int/downloads/7.0/installers/esa-snap_all_unix_7_0.sh
 chmod +x esa-snap_all_unix_7_0.sh
 ./esa-snap_all_unix_7_0.sh

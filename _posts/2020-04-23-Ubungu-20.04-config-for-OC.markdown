@@ -96,6 +96,7 @@ For latex I use the base distribution. Lately I've been doing most of my work in
 sudo apt install texlive-base texlive-science
 sudo apt install texlive-fonts-recommended texlive-fonts-extra
 sudo apt install dvipng
+sudo apt install cm-super
 ```
 
 To enable fontawesome5 in Ubuntu 18.04 we do

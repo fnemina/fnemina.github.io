@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  "Ubuntu 18.04 config for Ocean Colour processing and simulations"
-date:   2020-03-10 12:00:55 -0300
+title:  "Ubuntu 20.04 config for Ocean Colour processing and simulations"
+date:   2020-04-23 14:00:00 -0300
 categories: jekyll update
 ---
 
 I'll try to write down here how I configure my Ubuntu install to process Ocean Colour data and perform simulations using different radiative transfer codes.
 
-In general I try to use the last Ubuntu version, but this post will explain how to configure it with Ubuntu 18.04 LTS. When version 20.04 LTS is available I'll update this.
+In general I try to use the last Ubuntu version, but this post will explain how to configure it with Ubuntu 20.04 LTS. 
 
 You can jump straight to some topic here
 
@@ -30,6 +30,13 @@ The main softwares I install from the Ubuntu software repositories are related t
 
 ```bash
 sudo apt install gfortran git make wget vim
+```
+
+Configure git
+
+```bash
+git config --global user.name "FIRST_NAME LAST_NAME"
+git config --global user.email "OUR_NAME@example.com"
 ```
 
 # Anaconda

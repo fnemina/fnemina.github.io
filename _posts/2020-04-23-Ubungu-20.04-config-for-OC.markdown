@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Ubuntu 20.04 config for Ocean Colour processing and simulations"
-date:   2020-04-23 14:00:00 -0300
+title:  "Ubuntu 20.10 config for Ocean Colour processing and simulations"
+date:   2021-02-18 14:00:00 -0300
 categories: jekyll update
 ---
 
@@ -174,16 +174,23 @@ chmod +x esa-snap_all_unix_7_0.sh
 ```
 and follow the instructions on screen.
 
+## SeaDAS
+
+To install the SNAP software from ESA first download just run
+
+```bash
+sudo apt install default-jdk default-jre
+wget https://oceandata.sci.gsfc.nasa.gov/SeaDAS/installer/8.0.0/seadas_8.0.0_linux64_installer.sh
+sh seadas_8.0.0_linux64_installer.sh
+```
+and follow the instructions on screen.
+
 # VS Code
 
 To install VS code we do
 
 ```bash
-sudo apt install software-properties-common apt-transport-https
-wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
-sudo apt update
-sudo apt install code
+sudo snap install code --classic
 ```
 
 The extensions I use are python, Latex Workshop and Modern fortran.

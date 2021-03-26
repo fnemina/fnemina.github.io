@@ -72,7 +72,7 @@ With conda we can create different environments, but lately I've been working ju
 
 ## Add an icon for Jupyter lab
 
-Follow [this](https://blog.aldomann.com/jupyterlab-desktop-on-linux/) blog post.
+Follow [this](https://aldomann.com/post/running-jupyterlab-as-a-desktop-application-on-linux/) blog post.
 
 ## Nicer progress bar
 
